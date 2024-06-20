@@ -84,6 +84,14 @@ function validateConfirmPassword() {
 
 
 // localStorage.setItem("currentPassword",123123)
+// النص المشفر Base64
+let encodedPassword = "MTIzQWJjJiY=";
+
+// فك التشفير إلى النص الأصلي
+let decodedPassword = atob(encodedPassword);
+
+console.log(decodedPassword);  // ستظهر "123Abc&&"
+
 // Validate Current Password
 let currentPassword = document.getElementById("currentPassword");
 let currentPasswordError = document.getElementById("currentPasswordError");
@@ -91,7 +99,7 @@ let currentPasswordError = document.getElementById("currentPasswordError");
 currentPassword.addEventListener("input", validateCurrentPassword);
 
 function validateCurrentPassword() {
-    const savedPassword = localStorage.getItem("currentPassword");
+    const savedPassword = decodedPassword ;
     if (currentPassword.value === savedPassword) {
         currentPasswordError.innerHTML = "";
         return true;
@@ -170,7 +178,7 @@ if (newPassword.value !== "" && confirmPassword.value !== "") {
            // Check if new password is entered
           const newPasswordValue = newPassword.value.trim();
           if (newPasswordValue !== "") {
-           localStorage.setItem('currentPassword', newPasswordValue);
+           localStorage.setItem('decodedPassword', newPasswordValue);
 }
 
 
